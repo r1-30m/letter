@@ -61,13 +61,14 @@ const PopupOverlay = styled.div`
 const PopupBox = styled.div`
   background: #181818;
   border-radius: 16px;
-  padding: 36px 32px 28px 32px;
-  min-width: 320px;
+  padding: 48px 32px 36px 32px;
+  min-width: 420px;
   box-shadow: 0 4px 32px #000a;
   display: flex;
   flex-direction: column;
   align-items: center;
   position: relative;
+  max-width: 98vw;
 `;
 
 const PopupTitle = styled.h2`
@@ -116,28 +117,25 @@ const CloseBtn = styled.button`
 `;
 
 const LetterFormBox = styled.div`
-  background: #222;
-  color: #fff;
-  border-radius: 16px;
-  padding: 40px 48px 36px 48px;
-  box-shadow: 0 4px 32px rgba(0,0,0,0.22);
-  max-width: 700px;
-  min-width: 380px;
   width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  min-height: 520px;
+  max-width: 100%;
+  min-width: 0;
+  background: transparent;
+  color: #fff;
+  border-radius: 0;
+  padding: 0;
+  box-shadow: none;
+  margin: 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: stretch;
 
   @media (max-width: 600px) {
-    padding: 18px 4px 18px 4px;
+    padding: 0;
     min-width: 0;
-    max-width: 98vw;
-    width: 98vw;
-    min-height: 0;
+    max-width: 100vw;
+    width: 100vw;
   }
 `;
 
