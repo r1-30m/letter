@@ -117,7 +117,7 @@ const CloseBtn = styled.button`
 
 // API 기본 URL 설정
 const API_BASE_URL = process.env.NODE_ENV === 'production'
-  ? 'https://letter-production.up.railway.app/api' // 실제 Railway 백엔드 주소로 변경
+  ? 'https://letter-production.up.railway.app/api'
   : 'http://localhost:4001/api';
 
 // API 호출 함수들
