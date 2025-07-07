@@ -649,22 +649,12 @@ function App() {
                       }
                       setSendingLetter(false);
                     }}>
-                      <div style={{marginBottom:16,fontSize:'1.1rem'}}><b>받는 훈련병:</b> {selectedTrainee.name}</div>
-                      {/* 모바일에서 세로 배치, PC에서는 가로 배치 */}
-                      <div style={{display:'flex',gap:20,marginBottom:16,flexDirection:'row'}} className="letter-form-row">
-                        <div style={{flex:2,minWidth:0}}>
-                          <label style={{marginBottom:4,display:'block'}}>제목</label>
-                          <Input
-                            type="text"
-                            placeholder="제목"
-                            value={letterTitle}
-                            onChange={e => setLetterTitle(e.target.value)}
-                            required
-                            maxLength={50}
-                            style={{fontSize:'1.1rem',padding:'14px 12px',width:'100%'}}
-                          />
+                      {/* 상단 한 줄에 받는 훈련병 + 보내는 사람 입력란 배치 */}
+                      <div style={{display:'flex',justifyContent:'space-between',alignItems:'center',marginBottom:20,gap:20}}>
+                        <div style={{fontSize:'1.1rem',fontWeight:'bold',whiteSpace:'nowrap'}}>
+                          받는 훈련병: {selectedTrainee.name}
                         </div>
-                        <div style={{flex:1,minWidth:0}}>
+                        <div style={{minWidth:0,flex:'0 0 220px'}}>
                           <label style={{marginBottom:4,display:'block'}}>보내는 사람</label>
                           <Input
                             type="text"
@@ -677,6 +667,20 @@ function App() {
                           />
                         </div>
                       </div>
+                      {/* 제목 입력란 */}
+                      <div style={{marginBottom:16}}>
+                        <label style={{marginBottom:4,display:'block'}}>제목</label>
+                        <Input
+                          type="text"
+                          placeholder="제목"
+                          value={letterTitle}
+                          onChange={e => setLetterTitle(e.target.value)}
+                          required
+                          maxLength={50}
+                          style={{fontSize:'1.1rem',padding:'14px 12px',width:'100%'}}
+                        />
+                      </div>
+                      {/* 내용 입력란 */}
                       <label style={{marginBottom:4}}>내용</label>
                       <textarea
                         placeholder="내용을 입력하세요 (최대 1500자)"
