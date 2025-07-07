@@ -61,14 +61,20 @@ const PopupOverlay = styled.div`
 const PopupBox = styled.div`
   background: #181818;
   border-radius: 16px;
-  padding: 48px 32px 36px 32px;
-  min-width: 420px;
+  padding: 48px 48px 36px 48px;
+  min-width: 540px;
+  max-width: 700px;
   box-shadow: 0 4px 32px #000a;
   display: flex;
   flex-direction: column;
   align-items: center;
   position: relative;
-  max-width: 98vw;
+  width: 100%;
+  @media (max-width: 700px) {
+    min-width: 0;
+    max-width: 98vw;
+    padding: 18px 4vw 18px 4vw;
+  }
 `;
 
 const PopupTitle = styled.h2`
