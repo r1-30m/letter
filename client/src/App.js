@@ -115,6 +115,32 @@ const CloseBtn = styled.button`
   cursor: pointer;
 `;
 
+const LetterFormBox = styled.div`
+  background: #222;
+  color: #fff;
+  border-radius: 16px;
+  padding: 40px 48px 36px 48px;
+  box-shadow: 0 4px 32px rgba(0,0,0,0.22);
+  max-width: 700px;
+  min-width: 380px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  min-height: 520px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+
+  @media (max-width: 600px) {
+    padding: 18px 4px 18px 4px;
+    min-width: 0;
+    max-width: 98vw;
+    width: 98vw;
+    min-height: 0;
+  }
+`;
+
 // API 기본 URL 설정
 const API_BASE_URL = process.env.NODE_ENV === 'production'
   ? 'https://letter-production.up.railway.app/api'
@@ -590,23 +616,7 @@ function App() {
                 <PopupTitle>{selectedTrainee ? '편지 작성' : '훈련병 조회'}</PopupTitle>
                 {/* 편지 작성 폼만 보이도록 분기 */}
                 {selectedTrainee ? (
-                  <div style={{
-                    background:'#222',
-                    color:'#fff',
-                    borderRadius:16,
-                    padding:'40px 48px 36px 48px',
-                    boxShadow:'0 4px 32px rgba(0,0,0,0.22)',
-                    maxWidth:700,
-                    minWidth:380,
-                    width:'100%',
-                    marginLeft:'auto',
-                    marginRight:'auto',
-                    minHeight:520,
-                    display:'flex',
-                    flexDirection:'column',
-                    justifyContent:'center',
-                    alignItems:'stretch',
-                  }}>
+                  <LetterFormBox>
                     <button onClick={handleBackToSearch} style={{position:'absolute',top:18,left:22,background:'#fff',color:'#222',border:'none',borderRadius:6,padding:'6px 16px',fontWeight:'bold',cursor:'pointer',fontSize:'1rem',boxShadow:'0 1px 4px rgba(0,0,0,0.08)'}}>뒤로가기</button>
                     <form onSubmit={async e => {
                       e.preventDefault();
@@ -640,9 +650,9 @@ function App() {
                       setSendingLetter(false);
                     }}>
                       <div style={{marginBottom:16,fontSize:'1.1rem'}}><b>받는 훈련병:</b> {selectedTrainee.name}</div>
-                      {/* 제목과 보내는 사람을 한 줄에 배치 */}
-                      <div style={{display:'flex',gap:20,marginBottom:16}}>
-                        <div style={{flex:2}}>
+                      {/* 모바일에서 세로 배치, PC에서는 가로 배치 */}
+                      <div style={{display:'flex',gap:20,marginBottom:16,flexDirection:'row'}} className="letter-form-row">
+                        <div style={{flex:2,minWidth:0}}>
                           <label style={{marginBottom:4,display:'block'}}>제목</label>
                           <Input
                             type="text"
@@ -651,10 +661,10 @@ function App() {
                             onChange={e => setLetterTitle(e.target.value)}
                             required
                             maxLength={50}
-                            style={{fontSize:'1.1rem',padding:'14px 12px'}}
+                            style={{fontSize:'1.1rem',padding:'14px 12px',width:'100%'}}
                           />
                         </div>
-                        <div style={{flex:1}}>
+                        <div style={{flex:1,minWidth:0}}>
                           <label style={{marginBottom:4,display:'block'}}>보내는 사람</label>
                           <Input
                             type="text"
@@ -663,7 +673,7 @@ function App() {
                             onChange={e => setLetterSender(e.target.value)}
                             required
                             maxLength={20}
-                            style={{fontSize:'1.1rem',padding:'14px 12px'}}
+                            style={{fontSize:'1.1rem',padding:'14px 12px',width:'100%'}}
                           />
                         </div>
                       </div>
@@ -676,7 +686,7 @@ function App() {
                         }}
                         required
                         maxLength={1500}
-                        style={{resize:'vertical',minHeight:320,maxHeight:700,marginBottom:12,padding:18,borderRadius:10,border:'1.5px solid #333',background:'#222',color:'#fff',fontSize:'1.13rem',lineHeight:'1.7',width:'100%'}}
+                        style={{resize:'vertical',minHeight:220,maxHeight:700,marginBottom:12,padding:18,borderRadius:10,border:'1.5px solid #333',background:'#222',color:'#fff',fontSize:'1.13rem',lineHeight:'1.7',width:'100%'}}
                       />
                       <div style={{textAlign:'right',fontSize:'1rem',color:'#bbb',marginBottom:10}}>{letterContent.length} / 1500자</div>
                       <PopupButton type="submit" disabled={sendingLetter} style={{marginTop:18,fontSize:'1.1rem',padding:'16px 0'}}>
@@ -686,7 +696,7 @@ function App() {
                         <div style={{marginTop:10, color: sendResult.success ? '#2a8' : '#f55',fontSize:'1.05rem'}}>{sendResult.message}</div>
                       )}
                     </form>
-                  </div>
+                  </LetterFormBox>
                 ) : (
                   <form onSubmit={handleSearchTrainee} style={{display:'flex',flexDirection:'column',alignItems:'stretch',width:'100%'}}>
                     <label style={{marginBottom:4}}>이름</label>
