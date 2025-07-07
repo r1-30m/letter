@@ -116,8 +116,8 @@ const CloseBtn = styled.button`
 `;
 
 // API 기본 URL 설정
-const API_BASE_URL = process.env.NODE_ENV === 'production' 
-  ? 'https://your-vercel-app.vercel.app/api'  // 배포 후 실제 URL로 변경 필요
+const API_BASE_URL = process.env.NODE_ENV === 'production'
+  ? 'https://letter-production.up.railway.app/api' // 실제 Railway 백엔드 주소로 변경
   : 'http://localhost:4001/api';
 
 // API 호출 함수들
