@@ -226,7 +226,7 @@ function App() {
         })
       });
       if (
-        (res.status === 409 && data.message === '이미 가입된 사용자입니다.') ||
+        (data.status === 409 && data.message === '이미 가입된 사용자입니다.') ||
         (data.success === false && data.message === '이미 가입된 사용자입니다.')
       ) {
         alert('이미 가입된 사용자입니다.');
