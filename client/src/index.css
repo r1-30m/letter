@@ -1,0 +1,13 @@
+body {
+  margin: 0;
+  background: #111;
+  min-height: 100vh;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  color: #fff;
+  box-sizing: border-box;
+}
+
+code {
+  font-family: 'Consolas', 'Courier New', monospace;
+  color: #fff;
+}
