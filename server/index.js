@@ -18,7 +18,10 @@ app.use(cors());
 app.use(express.json());
 
 // PostgreSQL Pool 생성
-const pool = new Pool();
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL,
+  ssl: { rejectUnauthorized: false }
+});
 
 // 테이블 생성 (초기화)
 async function initTables() {
